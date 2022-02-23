@@ -10,3 +10,17 @@ Given(/^Empty ToDo list$/, async function ()  {
     await checkElementExists.call(this, '.todo-list', false)
     await checkIsEmpty.call(this, '.todo-list', false)
 });
+When(/^I write "([^"]*)" to (.*) and click to (.*)$/, async function (givenText, whereToWrite, whereToClick) {
+    let selector = '.todo-list'
+    await this.page.waitForSelector(selector)
+    await this.page.evaluate(
+        (givenText) => {
+            let input = document.querySelector('input[name=textbox]');
+            input.value = givenText
+        },
+        givenText
+    );
+    let buttonSelector = '.add-button'
+    const addButton = await this.page.$(buttonSelector)
+    await addButton.click()
+});
