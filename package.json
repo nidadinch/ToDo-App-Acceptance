@@ -26,5 +26,10 @@
   },
   "devDependencies": {
     "cucumber-html-reporter": "^5.5.0"
+  },
+  "puppeteerOptions": {
+    "PUPPETEER_SKIP_CHROMIUM_DOWNLOAD": "true",
+    "PUPPETEER_EXECUTABLE_PATH": "which chromium",
+    "headless": false
   }
 }

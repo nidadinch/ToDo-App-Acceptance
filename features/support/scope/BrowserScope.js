@@ -1,5 +1,5 @@
 const puppeteer = require('puppeteer');
-const puppeteerOptions = require('../../../../../../Downloads/cucumber-puppeteer-master/package.json').puppeteerOptions;
+const puppeteerOptions = require('../../../package.json').puppeteerOptions;
 
 /**
  * Manage the Puppeteer browser and page objects.
@@ -15,10 +15,8 @@ class BrowserScope {
 
     async init(){
         const defaultOptions = {
-            args: ['--no-sandbox', '--disable-dev-shm-usage', '--window-size=1920,1080'],
-            ignoreHTTPSErrors: true,
-            defaultViewport: {width: 1920, height: 1080},
-            headless: true,
+            args: ['--no-sandbox', '--disable-dev-shm-usage'],
+            ignoreHTTPSErrors: true
         }
         this.close();
 
