@@ -24,3 +24,17 @@ When(/^I write "([^"]*)" to (.*) and click to (.*)$/, async function (givenText,
     const addButton = await this.page.$(buttonSelector)
     await addButton.click()
 });
+Then(/^I should see "([^"]*)" item in ToDo list$/, async function (givenText) {
+    const allItems = await this.page.$$eval('.todo-list', async (items) => {
+        const elements = document.querySelectorAll(".todo-list-item")
+        let elementsArr = Array.from(elements);
+        const titles = elementsArr.map(element => element.innerText)
+        return titles;
+        },
+    );
+
+    let todoListItems = [givenText];
+    let checker = (array, target) => target.every(item => array.includes(item));
+    const result = checker(allItems, todoListItems);
+    assert(result === true, `Expected: "true", got: "${result}"`);
+});
