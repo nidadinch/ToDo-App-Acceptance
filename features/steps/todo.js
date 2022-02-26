@@ -13,18 +13,15 @@ Given(/^Empty ToDo list$/, async function ()  {
 When(/^I write "([^"]*)" to (.*) and click to (.*)$/, async function (givenText, whereToWrite, whereToClick) {
     let selector = '.todo-list'
     await this.page.waitForSelector(selector)
-    await this.page.evaluate(
-        (givenText) => {
-            let input = document.querySelector('input[name=textbox]');
-            input.value = givenText
-        },
-        givenText
-    );
+    await this.page.focus('#input')
+    await this.page.keyboard.type(givenText)
     let buttonSelector = '.add-button'
     const addButton = await this.page.$(buttonSelector)
     await addButton.click()
 });
 Then(/^I should see "([^"]*)" item in ToDo list$/, async function (givenText) {
+    await this.page.waitForSelector('.todo-list-item')
+
     const allItems = await this.page.$$eval('.todo-list', async (items) => {
         const elements = document.querySelectorAll(".todo-list-item")
         let elementsArr = Array.from(elements);
