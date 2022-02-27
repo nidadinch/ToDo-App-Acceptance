@@ -11,5 +11,6 @@ if-UI-acceptance-tests:
   image: node:lts-alpine
   stage: if-UI-acceptance-tests
   script:
+    - apt-get install chromium-browser
     - yarn install
     - npx cucumber-js --format progress
