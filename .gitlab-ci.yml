@@ -12,4 +12,4 @@ if-UI-acceptance-tests:
   stage: if-UI-acceptance-tests
   script:
     - yarn install
-    - yarn start
+    - npx cucumber-js --format progress
