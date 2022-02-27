@@ -1,0 +1,15 @@
+stages:
+  - if-UI-acceptance-tests
+cache:
+  key:
+    files:
+      - yarn.lock
+  paths:
+    - node_modules
+
+if-UI-acceptance-tests:
+  image: node:lts-alpine
+  stage: if-UI-acceptance-tests
+  script:
+    - yarn install
+    - yarn start && node reporter.js
