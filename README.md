@@ -47,30 +47,30 @@ Feature: ToDo
 
 ## Installation
 
-  ### Install Dependencies
+### Install Dependencies
 
-      ```
-      yarn install
-      ```
+```
+yarn install
+```
 
-      or
+or
 
-      ```
-      npm install
-      ```
+```
+npm install
+```
 
-  ### Run sanity test
+### Run sanity test
 
-      To run sanity test for checking the environment works correctly: 
+To run sanity test for checking the environment works correctly: 
 
-      ```
-      yarn cucumber-js features/sanity.feature
-      ```
-  ### Run all tests and generate HTML report
+```
+yarn cucumber-js features/sanity.feature
+```
+### Run all tests and generate HTML report
 
-      ```
-      yarn start
-      ```
+```
+yarn start
+```
 
 ## Dependencies
 
