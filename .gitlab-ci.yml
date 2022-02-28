@@ -1,33 +1,10 @@
+image: satantime/puppeteer-node
+
 stages:
   - if-UI-acceptance-tests
-cache:
-  key:
-    files:
-      - yarn.lock
-  paths:
-    - node_modules
 
 if-UI-acceptance-tests:
-  image: node:lts-alpine
-  stage: if-UI-acceptance-tests
-  before_script:
-    - apk add --no-cache \
-      chromium \
-      nss \
-      freetype \
-      harfbuzz \
-      ca-certificates \
-      ttf-freefont \
-      nodejs \
-      yarn
-    - yarn add puppeteer@10.0.0
-    - yarn add --dev @cucumber/cucumber
-
-    - addgroup -S pptruser && adduser -S -g pptruser pptruser 
-    - mkdir -p /home/pptruser/Downloads /app 
-    - chown -R pptruser:pptruser /home/pptruser 
-    - chown -R pptruser:pptruser /app
-
-  script:
-    - yarn install
-    - npx cucumber-js --format progress
+    stage: if-UI-acceptance-tests
+    script:
+      - yarn install
+      - yarn start
