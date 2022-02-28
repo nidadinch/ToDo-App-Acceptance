@@ -23,10 +23,11 @@ if-UI-acceptance-tests:
     - yarn add puppeteer@10.0.0
     - yarn add --dev @cucumber/cucumber
 
-    - addgroup -S pptruser && adduser -S -g pptruser pptruser \
-    && mkdir -p /home/pptruser/Downloads /app \
-    && chown -R pptruser:pptruser /home/pptruser \
-    && chown -R pptruser:pptruser /app
+    - addgroup -S pptruser && adduser -S -g pptruser pptruser 
+    - mkdir -p /home/pptruser/Downloads /app 
+    - chown -R pptruser:pptruser /home/pptruser 
+    - chown -R pptruser:pptruser /app
+
   script:
     - yarn install
     - npx cucumber-js --format progress
